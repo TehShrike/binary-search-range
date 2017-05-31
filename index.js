@@ -25,7 +25,7 @@ module.exports = function binarySearchRange(haystack, needle, comparator, low = 
 }
 
 function findMore({ index, direction, haystack, needle, comparator, low, high }) {
-	const matches = index => comparator(needle, haystack[index]) === 0
+	const matches = index => comparator(haystack[index], needle) === 0
 	const inRange = index => index >= low && index <= high
 
 	let current = index

@@ -1,6 +1,6 @@
 const binarySearch = require('binary-search')
 
-module.exports = function binarySearchRange(haystack, needle, comparator, low, high) {
+module.exports = function binarySearchRange(haystack, needle, comparator, low = 0, high = haystack.length - 1) {
 	const foundIndex = binarySearch(haystack, needle, comparator, low, high)
 
 	if (foundIndex < 0) {
@@ -25,25 +25,21 @@ module.exports = function binarySearchRange(haystack, needle, comparator, low, h
 }
 
 function findMore({ index, direction, haystack, needle, comparator, low, high }) {
-	const matches = () => comparator(needle, haystack[index]) === 0
+	const matches = index => comparator(needle, haystack[index]) === 0
+	const inRange = index => index >= low && index <= high
 
-	if (outOfRange({ index, haystack, low, high }) || !matches()) {
-		return []
+	let current = index
+	const results = []
+
+	while (inRange(current) && matches(current)) {
+		if (direction < 0) {
+			results.unshift(current)
+			current--
+		} else {
+			results.push(current)
+			current++
+		}
 	}
 
-	const otherIndexes = findMore({
-		index: index + direction,
-		direction,
-		haystack,
-		needle,
-		comparator,
-		low,
-		high,
-	})
-
-	return direction < 0 ? [ ...otherIndexes, index ] : [ index, ...otherIndexes ]
-}
-
-function outOfRange({ index, haystack, low, high }) {
-	return index < 0 || index < low || index > high || index >= haystack.length
+	return results
 }

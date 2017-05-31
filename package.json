@@ -1,6 +1,6 @@
 {
   "name": "binary-search-range",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Use binary search to find a range of matching elements",
   "main": "index.js",
   "scripts": {

@@ -1,0 +1,24 @@
+{
+  "name": "binary-search-range",
+  "version": "1.0.0",
+  "description": "Use binary search to find a range of matching elements",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TehShrike/binary-search-range.git"
+  },
+  "keywords": [
+    "binary",
+    "search",
+    "range"
+  ],
+  "author": "TehShrike",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/TehShrike/binary-search-range/issues"
+  },
+  "homepage": "https://github.com/TehShrike/binary-search-range#readme"
+}
